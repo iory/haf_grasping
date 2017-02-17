@@ -41,12 +41,15 @@
 //#include <boost/thread/thread.hpp>
 
 
+#include <opencv2/opencv.hpp>
+#include <cv_bridge/cv_bridge.h>
 
 class CCalcGrasppointsClient
 {
 public:
 	ros::Subscriber pc_sub;								//subscriber for pointcloud
 	ros::Subscriber pcd_sub;							//subscriber for path for pcd-file (to read)
+	ros::Subscriber cloud_sub;							//subscriber for path for pcd-file (to read)
 	ros::ServiceServer srv_set_grasp_center;			// service to set new grasp center (center of rectangles where grasps are searched for)
 	ros::ServiceServer srv_set_grasp_search_area_size;	// service to set size of rectangle where grasps are searched
 	ros::ServiceServer srv_set_grasp_calculation_time_max;	// service to set maximal grasp calculation time (sec) before result is returned
@@ -65,6 +68,7 @@ public:
 	int gripper_opening_width; 			//defines pre-grasp gripper opening width
 
 	void get_grasp_cb(const sensor_msgs::PointCloud2ConstPtr& pc_in);
+    void cloud_cb(const sensor_msgs::PointCloud2ConstPtr cloud_msg);
 	void open_pcd_and_trig_get_grasp_cb(std_msgs::String pcd_path);
 	bool set_grasp_center(haf_grasping::GraspSearchCenter::Request &req, haf_grasping::GraspSearchCenter::Response &res);
 	bool set_grasp_search_area_size(haf_grasping::GraspSearchRectangleSize::Request &req, haf_grasping::GraspSearchRectangleSize::Response &res);
@@ -123,8 +127,9 @@ public:
 		nh_.param("input_pc_topic", input_pc_topic, input_pc_topic);
 		this->pc_sub = nh_.subscribe(input_pc_topic,1, &CCalcGrasppointsClient::get_grasp_cb, this);
 		this->pcd_sub = nh_.subscribe("/haf_grasping/input_pcd_rcs_path",1, &CCalcGrasppointsClient::open_pcd_and_trig_get_grasp_cb, this);
+		this->cloud_sub = nh_.subscribe("/haf_grasping/input_cloud",1, &CCalcGrasppointsClient::cloud_cb, this);
 		//services for setting parameters
-		this->srv_set_grasp_center = nh_.advertiseService("/haf_grasping/set_grasp_center", &CCalcGrasppointsClient::set_grasp_center,this);
+		this->srv_set_grasp_center = nh_.advertiseService("/haf_grasping/set_grasp_center", &CCalcGrasppointsClient::set_grasp_center, this);
 		this->srv_set_grasp_search_area_size = nh_.advertiseService("/haf_grasping/set_grasp_search_area_size", &CCalcGrasppointsClient::set_grasp_search_area_size,this);
 		this->srv_set_grasp_calculation_time_max = nh_.advertiseService("/haf_grasping/set_grasp_calculation_time_max", &CCalcGrasppointsClient::set_grasp_calculation_time_max,this);
 		this->srv_set_approach_vector = nh_.advertiseService("/haf_grasping/set_approach_vector", &CCalcGrasppointsClient::set_approach_vector, this);
@@ -132,6 +137,17 @@ public:
 		this->srv_set_gripper_width = nh_.advertiseService("/haf_grasping/set_gripper_opening_width", &CCalcGrasppointsClient::set_gripper_width, this);
 	}
 };
+
+// open pcd file for given path and start get_grasp_cb (that triggers grasp calculation)
+void CCalcGrasppointsClient::cloud_cb(const sensor_msgs::PointCloud2ConstPtr cloud_msg)
+{
+    sensor_msgs::PointCloud2 pcd_as_ros_msg(*cloud_msg);
+    pcd_as_ros_msg.header.frame_id = this->base_frame_default /*"base_link"*/;
+    pcd_as_ros_msg.header.stamp = ros::Time(0);
+    const sensor_msgs::PointCloud2ConstPtr pcd_as_ros_msg_const_ptr = boost::make_shared<sensor_msgs::PointCloud2>(pcd_as_ros_msg);
+    CCalcGrasppointsClient::get_grasp_cb(pcd_as_ros_msg_const_ptr);
+    // CCalcGrasppointsClient::get_grasp_cb(cloud_msg);
+}
 
 // open pcd file for given path and start get_grasp_cb (that triggers grasp calculation)
 void CCalcGrasppointsClient::open_pcd_and_trig_get_grasp_cb(std_msgs::String pcd_path)
@@ -310,5 +326,3 @@ int main (int argc, char **argv)
   ros::spin();
   return 0;
 }
-
-

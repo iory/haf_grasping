@@ -81,7 +81,8 @@
 //Actionlib
 #include <actionlib/server/simple_action_server.h>
 #include <haf_grasping/CalcGraspPointsServerAction.h>
-
+#include <opencv2/opencv.hpp>
+#include <cv_bridge/cv_bridge.h>
 
 #include <CIntImage_to_Featurevec.h>
 
@@ -1427,4 +1428,3 @@ int main (int argc, char** argv)
   ros::spin();
   return (0);
 }
-
