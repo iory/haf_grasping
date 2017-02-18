@@ -3,8 +3,7 @@
 	<node
 	    name="calc_grasppoints_svm_action_server"
 		pkg="haf_grasping"
-		type="calc_grasppoints_action_server"
-        launch-prefix="xterm -e gdb --args">
+		type="calc_grasppoints_action_server">
     </node>
 
 	<!-- start haf_grasp calculation CLIENT -->
@@ -13,11 +12,13 @@
 		pkg="haf_grasping"
 		type="calc_grasppoints_action_client"
 		output="screen">
+      <rosparam>
+        base_frame: camera_rgb_optical_frame
+      </rosparam>
     </node>
 
 	<!-- start rviz for visualization -->
 	<include file="$(find haf_grasping)/launch/rviz.launch"/>
-
 
 
 	<!-- PARAMETER DEFINITION -->
@@ -42,7 +43,7 @@
 	<rosparam param="input_pc_topic">/haf_grasping/depth_registered/single_cloud/points_in_lcs</rosparam>
 
 	<!-- define default frame for point cloud (if generated from pcd) -->
-	<rosparam param="base_frame">base_link</rosparam>
+	<rosparam param="base_frame">camera_rgb_optical_frame</rosparam>
 
 	<!-- define default gripper_width factor: if value is n, this means gripper is tested with 1/n times the max. gripper opening width -->
 	<rosparam param="gripper_width">1</rosparam>

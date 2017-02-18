@@ -53,14 +53,14 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 0.1
-        Min Value: 0
+        Max Value: 2.06848
+        Min Value: 0.432662
         Value: true
       Axis: Z
       Channel Name: x
       Class: rviz/PointCloud2
       Color: 85; 255; 255
-      Color Transformer: AxisColor
+      Color Transformer: RGB8
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
@@ -76,6 +76,7 @@ Visualization Manager:
       Size (m): 0.01
       Style: Points
       Topic: /haf_grasping/calc_gp_as_inputpcROS
+      Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
@@ -105,7 +106,7 @@ Visualization Manager:
       Marker Topic: visualization_marker_array
       Name: MarkerArray
       Namespaces:
-        my_namespace: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -113,7 +114,7 @@ Visualization Manager:
       Marker Topic: /visualization_marker_array_grasp_params
       Name: MarkerArray
       Namespaces:
-        haf_grasping_parameters: true
+        {}
       Queue Size: 100
       Value: true
     - Alpha: 0.5
@@ -134,10 +135,333 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: false
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        BODY:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        CHEST_LINK0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        CHEST_LINK1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        HEAD_LINK0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        HEAD_LINK1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LARM_LINK0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LARM_LINK1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LARM_LINK2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LARM_LINK3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LARM_LINK4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LARM_LINK5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LARM_LINK6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LARM_LINK7:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LARM_cb_jig:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        LLEG_LINK0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LLEG_LINK1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LLEG_LINK2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LLEG_LINK3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LLEG_LINK4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LLEG_LINK5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        LLEG_LINK6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        L_INDEXMP_P_LINK:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        L_INDEXMP_R_LINK:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        L_INDEXPIP_R_LINK:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        L_MIDDLEPIP_R_LINK:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        L_THUMBCM_P_LINK:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        L_THUMBCM_Y_LINK:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        Link Tree Style: Links in Alphabetic Order
+        RARM_LINK0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RARM_LINK1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RARM_LINK2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RARM_LINK3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RARM_LINK4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RARM_LINK5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RARM_LINK6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RARM_LINK7:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RARM_cb_jig:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        RLEG_LINK0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RLEG_LINK1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RLEG_LINK2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RLEG_LINK3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RLEG_LINK4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RLEG_LINK5:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        RLEG_LINK6:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        R_INDEXMP_P_LINK:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        R_INDEXMP_R_LINK:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        R_INDEXPIP_R_LINK:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        R_MIDDLEPIP_R_LINK:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        R_THUMBCM_P_LINK:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        R_THUMBCM_Y_LINK:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_rgb_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_rgb_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        fisheye:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        head_end_coords:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        larm_end_coords:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        lfsensor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        lhsensor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        lleg_end_coords:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rarm_end_coords:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rfsensor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rhsensor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rleg_end_coords:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        torso_end_coords:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+      Name: RobotModel
+      Robot Description: robot_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Fixed Frame: base_link
+    Fixed Frame: ground
     Frame Rate: 30
   Name: root
   Tools:
@@ -158,22 +482,22 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.14036
+      Distance: 7.34849
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.162146
-        Y: 0.0634158
-        Z: -0.123912
+        X: 1.83574
+        Y: 0.962577
+        Z: 1.99327
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.694798
+      Pitch: 0.584798
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 2.62847
+      Yaw: 1.07528
     Saved: ~
 Window Geometry:
   Displays:
@@ -191,5 +515,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1680
-  X: 4560
-  Y: 24
+  X: 850
+  Y: 14

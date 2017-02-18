@@ -39,8 +39,7 @@
 #include <pcl_ros/point_cloud.h>
 //#include "pcl/io/io.h"
 //#include <boost/thread/thread.hpp>
-
-
+#include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/opencv.hpp>
 #include <cv_bridge/cv_bridge.h>
 

@@ -83,7 +83,7 @@
 #include <haf_grasping/CalcGraspPointsServerAction.h>
 #include <opencv2/opencv.hpp>
 #include <cv_bridge/cv_bridge.h>
-
+#include <opencv2/imgproc/imgproc.hpp>
 #include <CIntImage_to_Featurevec.h>
 
 //new HEIGHT and WIDTH have to be next higher even number of the up-rounded square root of (HEIGHT*HEIGHT+WIDTH*WIDTH)
@@ -295,7 +295,8 @@ void CCalc_Grasppoints::read_pc_cb(const haf_grasping::CalcGraspPointsServerGoal
         }
 	else
         {
-            this->base_frame_id = "/base_link";
+            // this->base_frame_id = "/base_link";
+            this->base_frame_id = "/ground";
         }
         cout << " --> BASE_FRAME_ID: " << this->base_frame_id << endl;
 
