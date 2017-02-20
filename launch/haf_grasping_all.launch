@@ -13,7 +13,7 @@
 		type="calc_grasppoints_action_client"
 		output="screen">
       <rosparam>
-        base_frame: camera_rgb_optical_frame
+        base_frame: ground
       </rosparam>
     </node>
 
